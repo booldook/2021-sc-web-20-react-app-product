@@ -6,7 +6,7 @@
  *! useMemo() => [state 최적화]
  */
 
-import React, { useState, useCallback, useMemo, useRef, useEffect } from 'react'
+import React, { useState, useCallback, useRef } from 'react'
 import styled from 'styled-components'
 import Form from 'react-bootstrap/Form'
 
@@ -14,12 +14,13 @@ const CloseButton = styled.div`
 	position: absolute; top: 50%; right: .325em; transform: translateY(-50%); font-size: 1.5em; cursor: pointer;
 `
 
-const Search = () => {
+const Search = ({ handleChange }) => {
 	const [query, setQuery] = useState('')
 	const inputRef = useRef(null)
 	const onChange = useCallback((e) => {
 		setQuery(e.target.value)
-	}, [])
+		handleChange(e.target.value)
+	}, [handleChange])
 	const onClick = useCallback((e) => {
 		setQuery('')
 		inputRef.current.focus()
@@ -36,4 +37,4 @@ const Search = () => {
 	);
 }
 
-export default Search
+export default React.memo(Search)
