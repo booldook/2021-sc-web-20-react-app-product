@@ -24,11 +24,11 @@ const Price = styled.div`
 	font-size: 1.25em; text-align: right;
 `
 
-const List = ({ v }) => {
+const List = ({ list: v }) => {
 	return (
 		<ListWrap>
 			<div className="img-wrap">
-				<img src={ v.src } className="w-100" alt={ v.title } />
+				<img src={ "/img/" + v.src } className="w-100" alt={ v.title } />
 			</div>
 			<Content>
 				<Title>{ v.title }</Title>
